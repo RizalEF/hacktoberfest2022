@@ -41,6 +41,7 @@
                                         <th>Kategori</th>
                                         <th>Judul</th>
                                         <th>Waktu Pengarsipan</th>
+										<th>Aksi</th>
                                     </thead>
                                     <tbody>
                                         <?php $i = 1; ?>
@@ -51,6 +52,11 @@
                                                 <td><?php echo $srt['kategori_surat']; ?></td>
                                                 <td><?php echo $srt['judul_surat']; ?></td>
                                                 <td><?php echo $srt['waktu_pengarsipan']; ?></td>
+												<td>
+                                                    <a href="<?php echo base_url('arsip/hapusSurat/' . $srt['id_surat']); ?>" class="tombol-batal btn btn-danger">Hapus</a>
+                                                    <a href="<?php echo base_url('arsip/unduh/' . $srt['id_surat']); ?>" target="_blank" class="btn btn-warning">Unduh</a>
+                                                    <a href="<?php echo base_url('arsip/lihat/' . $srt['id_surat']); ?>" class=" btn btn-primary">Lihat</a>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>
