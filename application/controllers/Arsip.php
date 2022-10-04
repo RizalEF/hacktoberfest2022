@@ -75,6 +75,14 @@ class Arsip extends CI_Controller
 		$this->load->view('arsip/about', $data);
 		$this->load->view('templates/footer');
 	}
+	
+	public function hapusSurat($id_surat)
+	{
+		$this->db->where('id_surat', $id_surat);
+		$this->db->delete('tb_surat');
+		$this->session->set_flashdata('message', 'Penghapusan Arsip Surat');
+		redirect($_SERVER['HTTP_REFERER']);
+	}
 
 	public function ubah()
 	{
