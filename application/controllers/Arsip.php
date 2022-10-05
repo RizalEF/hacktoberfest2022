@@ -76,6 +76,26 @@ class Arsip extends CI_Controller
 		$this->load->view('templates/footer');
 	}
 	
+	public function unduh($id_surat)
+	{
+		$this->load->helper('download');
+		$fileinfo = $this->arsip->unduh($id_surat);
+		$filenama = 'assets/file/' . $fileinfo['path'];
+		force_download($filenama, NULL);
+	}
+	
+	public function lihat($id_surat)
+	{
+		$data['title'] = 'Arsip Surat >> Lihat';
+		$data['unduh_satuan'] = $this->db->get_where('tb_surat', ['id_surat' => $id_surat])->result_array();
+		$data['list_surat'] = $this->arsip->getSuratId($id_surat);
+		$data['surat'] = $this->db->get('tb_surat')->result_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar_arsip', $data);
+		$this->load->view('arsip/detail', $data);
+		$this->load->view('templates/footer');
+	}
+	
 	public function hapusSurat($id_surat)
 	{
 		$this->db->where('id_surat', $id_surat);
