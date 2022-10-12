@@ -13,6 +13,7 @@ class Arsip extends CI_Controller
 		$this->load->helper('tglindo');
 		$this->load->model('Arsip_model', 'arsip');
 	}
+	
 	public function index()
 	{
 		$data['title'] = 'Arsip Surat';
@@ -23,6 +24,21 @@ class Arsip extends CI_Controller
 		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar_arsip', $data);
 		$this->load->view('arsip/index', $data);
+		$this->load->view('templates/footer');
+	}
+	
+	public function home()
+	{
+		$data['title'] = 'Arsip Surat >> Dashboard';
+
+		$this->db->where('kategori_surat', 'Pengumuman');
+		$pengumuman = $this->db->get('tb_surat')->num_rows();
+		$data['pengumuman'] = $pengumuman;
+		
+		$data['surat'] = $this->db->get('tb_surat')->result_array();
+		$this->load->view('templates/header', $data);
+		$this->load->view('templates/sidebar_arsip', $data);
+		$this->load->view('arsip/home', $data);
 		$this->load->view('templates/footer');
 	}
 
