@@ -31,9 +31,15 @@ class Arsip extends CI_Controller
 	{
 		$data['title'] = 'Arsip Surat >> Dashboard';
 
+		//query count surat kategori pengumuman
 		$this->db->where('kategori_surat', 'Pengumuman');
 		$pengumuman = $this->db->get('tb_surat')->num_rows();
 		$data['pengumuman'] = $pengumuman;
+
+		// //query count surat kategori nota dinas
+		$this->db->where('kategori_surat', 'Nota Dinas');
+		$notadinas = $this->db->get('tb_surat')->num_rows();
+		$data['notadinas'] = $notadinas;
 		
 		$data['surat'] = $this->db->get('tb_surat')->result_array();
 		$this->load->view('templates/header', $data);
