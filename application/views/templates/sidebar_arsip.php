@@ -5,6 +5,14 @@
 	<div class="sidebar">
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+				
+				<li class="nav-item has-treeview">
+					<a href="<?php echo base_url('arsip/home'); ?>" class="nav-link">
+						<i class="fa fa-home" aria-hidden="true"></i>
+						<p> Dashboard</p>
+					</a>
+				</li>
+				
 				<li class="nav-item has-treeview">
 					<a href="<?php echo base_url('arsip/index'); ?>" class="nav-link">
 						<i class="fa fa-star" aria-hidden="true"></i>
